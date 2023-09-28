@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Unity, useUnityContext } from 'react-unity-webgl';
 import './App.css';
 
 function App() {
+  const {
+    unityProvider,
+    isLoaded,
+    loadingProgression
+  } = useUnityContext({
+    loaderUrl: "./unityBuild/Build.loader.js",
+    dataUrl: "./unityBuild/Build.data",
+    frameworkUrl: "./unityBuild/Build.framework.js",
+    codeUrl: "./unityBuild/Build.wasm",
+    webglContextAttributes: {
+      preserveDrawingBuffer: true,
+    },
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {!isLoaded && (
+      <div className="LoadingBar">
+        <div
+          className="LoadingBarFill"
+          style={{ width: loadingProgression * 440 }}
+        />
+      </div>
+    )}
+    <Unity
+        unityProvider={unityProvider}
+        style={{
+          display: isLoaded ? "block" : "none",
+          width: "100vw",
+          height: "100vh",
+          overflow: "hidden",
+          zIndex: 0 }}
+    />
     </div>
   );
 }
