@@ -23,7 +23,7 @@ function App() {
       <div className="LoadingBar">
         <div
           className="LoadingBarFill"
-          style={{ width: loadingProgression * 400 }}
+          style={{ width: loadingProgression * 398 }}
         />
       </div>
     )}

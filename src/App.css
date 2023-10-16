@@ -16,7 +16,6 @@
   background: #8c8c8c;
   width: 400px;
   height: 40px;
-  /*border-radius: 5px;*/
   overflow: hidden;
   z-index: 1;
 }
@@ -29,7 +28,6 @@
 
 .LoadingBar .LoadingBarFill {
   height: 36px;
-  /*border-radius: 5px;*/
   margin: 2px;
   background: #ffffff;
   transition: 0.3s width ease-out;
